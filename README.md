@@ -1,5 +1,5 @@
-# High Availability Load Balancer (GCP Cloud Load Balancing Emulator)
-# Balanceador de Carga de Alta Disponibilidad (Emulador de GCP Cloud Load Balancing)
+# High Availability Load Balancer HAProxy y Keepalived
+# Balanceador de Carga de Alta Disponibilidad con HAProxy y Keepalived
 
 [English](#english) | [Español](#español)
 
@@ -9,7 +9,7 @@
 ## English
 
 ### Overview
-This project provides an automated setup to emulate the core components of Google Cloud Load Balancing on a Contabo VPS (or any Debian/Ubuntu server). It uses **HAProxy** for Layer 4/7 routing and **Keepalived** for high availability via a Floating IP (VRRP).
+This project provides an automated setup for a high availability load balancer on a Contabo VPS (or any Debian/Ubuntu server). It uses **HAProxy** for Layer 4/7 routing and **Keepalived** for high availability via a Floating IP (VRRP).
 
 ### Included Files
 - `haproxy.cfg`: Main configuration file handling Frontend, URL Maps (routing based on paths), Backend Services, and Health Checks.
@@ -59,7 +59,7 @@ sudo ufw enable
 ## Español
 
 ### Resumen
-Este proyecto provee una configuración automatizada para emular los componentes principales de Google Cloud Load Balancing en un VPS de Contabo (o cualquier servidor Debian/Ubuntu). Utiliza **HAProxy** para el ruteo de Capa 4/7 y **Keepalived** para alta disponibilidad mediante una IP Flotante (VRRP).
+Este proyecto provee una configuración automatizada para un balanceador de carga de alta disponibilidad en un VPS de Contabo (o cualquier servidor Debian/Ubuntu). Utiliza **HAProxy** para el ruteo de Capa 4/7 y **Keepalived** para alta disponibilidad mediante una IP Flotante (VRRP).
 
 ### Archivos Incluidos
 - `haproxy.cfg`: Archivo de configuración principal que maneja el Frontend, URL Maps (ruteo basado en rutas), Backend Services y Health Checks.
@@ -102,3 +102,4 @@ sudo ufw enable
 #### 5. Configuración de Red en Contabo
 - En tu panel de Contabo, asigna una **IP Flotante (Floating IP)** a tu servidor Maestro.
 - Asegúrate de que el parámetro `interface eth0` en `keepalived.conf` coincida con el nombre real de tu interfaz de red pública (usa `ip a` para verificarlo).
+
