@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Load Balancer Principal
+  haproxy:
+    image: haproxy:2.8
+    ports:
+      - "8080:80" # Mapea el puerto 80 del contenedor al 8080 de tu PC local
+    volumes:
+      - ./haproxy-local.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      - api1
+      - api2
+      - static1
+      - static2
+      - web1
+
+  # Servidores Backend (API) - Usamos una imagen de NGINX que muestra info del servidor
+  api1:
+    image: nginxdemos/hello
+    hostname: api_node_1
+  api2:
+    image: nginxdemos/hello
+    hostname: api_node_2
+
+  # Servidores Backend (Static)
+  static1:
+    image: nginxdemos/hello
+    hostname: static_node_1
+  static2:
+    image: nginxdemos/hello
+    hostname: static_node_2
+
+  # Servidor Backend (Por defecto)
+  web1:
+    image: nginxdemos/hello
+    hostname: web_node_1
